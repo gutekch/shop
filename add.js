@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const cart = document.querySelector(".cart-list");
   const total = document.querySelector(".in-total");
 
-  function Product(title, price, img) {
+  function Product(title, price, img, productId) {
     this.title = title;
     this.price = price;
     this.img = img;
+    this.productId = productId;
   }
 
   const myProducts = [
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  const antoninka = new Product('Antoninka',500,'/photos/michalek.png');
+  const antoninka = new Product('Antoninka',500,'/photos/michalek.png','product3');
   myProducts.push(antoninka);
 
   localStorage.setItem("myKey", JSON.stringify(myProducts));
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   myStorage.forEach((product) => {
     const productDiv = document.createElement("div");
     productDiv.classList.add("product");
+    productDiv.id = product.productId
     productDiv.innerHTML = `
     <h3>${product.title}</h3>
     <img src=${product.img}>
