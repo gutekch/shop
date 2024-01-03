@@ -4,7 +4,7 @@
 }
 
 body{
-    /* overflow: hidden; */
+    overflow: hidden;
     position:relative;
 }
 .navbar{
@@ -43,6 +43,8 @@ body{
     border:3px solid white;
     margin-top:15px;
     background-color: rgb(0, 0, 255,0.6);
+    margin-left: 10px;
+    margin-right: 10px;
     
     
 }
@@ -67,8 +69,8 @@ button{
     width: 150px;
     border-radius: 20px;
     position: absolute;
-    top:50px;
-    right: 0;
+    bottom:200px;
+    right: 50px;
     background-color: rgba(255, 187, 0, 0.75);
     text-align: center;
     padding-top:5px;
