@@ -5,23 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        div[id='page1'] {
+            display:none;
+        }
+
+        div[id='page2'] {
+            display:none;
+        }
+
+        div[id='page3'] {
+            display:block;
+        }
+    </style>
     <script src="add.js" defer></script>
 </head>
 <body>
-    <div class="navbar">
-        <p id="main-page">Main Page</p>
-        <p id="Products">Products</p>
-        <p id="About Us">About Us</p>
-        <p id="Shopping chart">Shopping cart</p>
+    <div id="nav-and-header">
+        <div class="navbar">
+            <button id="main-page" data-page="page1">Main Page</button>
+            <button id="Products" data-page="page2">About Us</button>
+            <button id="About Us" data-page="pagexx">Products</button>
+            <button id="Shopping chart" data-page="page3">Shopping cart</button>
+        </div>
+        <div class="header"><h1>GUSTAW'S AWESOME ONLINE SHOP</h1></div>
     </div>
-    <div class="header"><h1>GUSTAW'S AWESOME ONLINE SHOP</h1></div>
-    <div class="random-products">
+    <div class="page" id="page1">
+        <div class="random-products">
+        </div>
+        <div class="cart">
+            <p class="in-total"></p>
+            <img id='cart-img' src=/photos/cart.png>
+            <ul class="cart-list">
+            </ul>
+            <button class="clearcart">CLEAR CART</button>
+        </div>
     </div>
-    <div class="cart">
-        <p class="in-total">TOTAL:</p>
-        <img src=/photos/cart.png>
-        <ul class="cart-list">
-        </ul>
+    <div class="page" id="page2">
+        <div class="aboutme">
+            <img id="myphoto" src="/photos/gustaw.png">
+            <div class="aboutmeText">
+                <p class="par1">&nbsp;
+                    Gustaw Ch., the visionary founder of Gustaw's Awesome Online Shop, stands as a paragon of innovation and entrepreneurial prowess. His indomitable spirit and unwavering commitment to excellence have propelled his e-commerce venture to unparalleled heights.
+                    
+                    Gustaw, with his keen business acumen, has crafted an online shopping haven that transcends ordinary expectations. His brainchild is not merely a marketplace; it is a testament to his creativity and dedication to delivering exceptional products and services.
+                    
+                    In the digital realm, Gustaw Ch. is a trailblazer, reshaping the landscape of online retail with a touch of brilliance. 
+                </p>
+                
+                <p class= "par2">&nbsp;
+                    His name has become synonymous with quality, reliability, and an unparalleled shopping experience.
+                    As the architect of this online empire, Gustaw has cultivated a community of dedicated customers who sing praises of the seamless transactions, curated selections, and unparalleled customer service that define his realm. His commitment to customer satisfaction has created a legion of loyal patrons who 
+                    eagerly await each new addition to the virtual shelves.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="page" id="page3">
+    <div class="page3body">
+        <div class="page3-container">
+            <h1 class="shoppingchart">SHOPPING CHART</h1>
+            <img src="/photos/cart.png">
+            <p class="total-detailed"></p>
+            <p id="totalcart"></p>
+            <ul class="shoppingitems">
+            </ul> 
+        </div>
+    </div>
+    </div>
     </div>
 </body>
 </html>
