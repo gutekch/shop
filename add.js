@@ -168,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const detailedCartList = document.querySelector(".shoppingitems");
     let currentItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     const websiteProducts = JSON.parse(localStorage.getItem("myKey"));
-    console.log(websiteProducts)
     const segregatedItems = currentItems.reduce((accumulator, item) => {
       const existingItem = accumulator.find((obj) => obj.title === item.title);
 
@@ -183,23 +182,27 @@ document.addEventListener("DOMContentLoaded", function () {
     total.innerHTML = "";
     segregatedItems.forEach((item) => {
       // appending the image from website Products to the detailedCartList ----- ALE JESTEM DUMNY Z TEGO KURWA
-      const product = websiteProducts.find(product=>product.title === `${item.title}`);
+      const product = websiteProducts.find(
+        (product) => product.title === `${item.title}`
+      );
       // creating list elements for the current detailed shopping cart
       const listedItem = document.createElement("li");
       listedItem.classList = "listed-item";
-      listedItem.innerHTML = `<img class="item-image" src=${product.img}><div class="item-title">${
-        item.title
-      }</div> <div class="item-price>Price: ${
-        item.price
-      }</div> <div class="item-quantity">Quantity: ${
-        item.quantity
-      }</div> <div class="item-total">Total/item : $${
+      listedItem.innerHTML = `<img class="item-image" src=${
+        product.img
+      }><div class="item-title">${item.title}</div>
+      <div class="arrow-left"><img src="/photos/arrow.png">
+      </div>
+      <div class="item-quantity"> ${item.quantity}</div> 
+      <div class="arrow-right"><img src="/photos/arrow.png">
+      </div><div class="item-total">Total/item : $${
         parseInt(item.price) * parseInt(item.quantity)
       }</div>`;
+      listedItem.id = `${item.title}`
       detailedCartList.appendChild(listedItem);
-
-
     });
+
+    
     const priceTotal = currentItems.reduce((total, item) => {
       const singleTotal = parseInt(item.price);
       total += singleTotal;
@@ -210,5 +213,29 @@ document.addEventListener("DOMContentLoaded", function () {
     totalContainer.innerHTML = `TOTAL:${priceTotal}`;
     total.appendChild(totalContainer);
   }
+
   updateDetailedCart();
+
+  // Changing quantity in detailed cart - ARROWS
+  let quantityArrowsLeft = document.querySelectorAll(".arrow-left");
+  let quantityArrowsRight = document.querySelectorAll(".arrow-right");
+  
+  quantityArrowsLeft.forEach(item => item.addEventListener('click', function () {
+    const parentId = item.parentNode.id;
+    const parentDiv = document.getElementById(`${parentId}`);
+  
+    const keys = localStorage.getItem('cartItems');
+    console.log(JSON.parse(keys));
+    for (let key of keys) {
+      const storedItem = JSON.parse(localStorage.getItem(key));
+      console.log(`key:${key}`);
+      console.log(`parentID:${parentId}`);
+      if (storedItem.title === parentId){
+        localStorage.removeItem(key);
+        break;
+      }
+    }
+  }));
+  
+ 
 });
